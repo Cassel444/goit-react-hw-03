@@ -1,0 +1,11 @@
+.item {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  border: 1px solid black;
+  border-radius: 4px;
+  padding: 10px;
+}
+.item:not(:last-child) {
+  margin-bottom: 10px;
+}
