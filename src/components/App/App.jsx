@@ -35,7 +35,7 @@ function App() {
   return (
     <div className={css.container}>
       <h1>Phonebook</h1>
-      <ContactForm onAdd={addContact} />
+      <ContactForm onAdd={addContact} initialValues={userInformation} />
       <SearchBox value={filter} onFilter={setFilter} />
       <ContactList list={visibleUser} onDelete={deleteUser} />
     </div>
