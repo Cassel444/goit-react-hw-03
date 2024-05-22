@@ -3,7 +3,7 @@ import informList from "../../informList.json";
 import { useState, useEffect } from "react";
 
 import ContactForm from "../ContactForm/ContactForm";
-// import SearchBox from "../SearchBox/SearchBox";
+import SearchBox from "../SearchBox/SearchBox";
 import ContactList from "../ContactList/ContactList";
 
 const userInformation = () => {
@@ -12,8 +12,8 @@ const userInformation = () => {
 };
 
 function App() {
-  const [user, setUser] = useState(informList);
-  const [filter, setFilter] = useState('')
+  const [users, setUser] = useState(userInformation);
+  const [filter, setFilter] = useState("");
 
   const addContact = (newUser) => {
     setUser((prevUser) => {
@@ -25,16 +25,19 @@ function App() {
       return prevUser.filter((user) => user.id !== userId);
     });
   };
+  const visibleUser = users.filter((user) =>
+    user.name.toLowerCase().includes(filter.toLowerCase())
+  );
   useEffect(() => {
-    localStorage.setItem("user-data", JSON.stringify(user));
-  }, [user]);
+    localStorage.setItem("user-data", JSON.stringify(visibleUser));
+  }, [visibleUser]);
 
   return (
     <div className={css.container}>
       <h1>Phonebook</h1>
       <ContactForm onAdd={addContact} />
-      {/* <SearchBox /> */}
-      <ContactList list={user} onDelete={deleteUser} />
+      <SearchBox value={filter} onFilter={setFilter} />
+      <ContactList list={visibleUser} onDelete={deleteUser} />
     </div>
   );
 }
