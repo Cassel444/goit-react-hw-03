@@ -20,14 +20,17 @@ function App() {
       return [...prevUser, newUser];
     });
   };
+
   const deleteUser = (userId) => {
     setUser((prevUser) => {
       return prevUser.filter((user) => user.id !== userId);
     });
   };
+
   const visibleUser = users.filter((user) =>
     user.name.toLowerCase().includes(filter.toLowerCase())
   );
+
   useEffect(() => {
     localStorage.setItem("user-data", JSON.stringify(visibleUser));
   }, [visibleUser]);
@@ -35,7 +38,7 @@ function App() {
   return (
     <div className={css.container}>
       <h1>Phonebook</h1>
-      <ContactForm onAdd={addContact} initialValues={userInformation} />
+      <ContactForm onAdd={addContact} />
       <SearchBox value={filter} onFilter={setFilter} />
       <ContactList list={visibleUser} onDelete={deleteUser} />
     </div>
