@@ -2,6 +2,7 @@ import css from "./ContactForm.module.css";
 import { nanoid } from "nanoid/non-secure";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
+import { useId } from "react";
 
 const ContactFormSchema = Yup.object().shape({
   name: Yup.string()
@@ -12,8 +13,8 @@ const ContactFormSchema = Yup.object().shape({
 });
 
 function ContactForm({ onAdd }) {
-  const nameFieldId = nanoid();
-  const numberFieldId = nanoid();
+  const nameFieldId = useId();
+  const numberFieldId = useId();
   const userId = nanoid();
 
   return (
