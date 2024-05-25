@@ -32,8 +32,8 @@ function App() {
   );
 
   useEffect(() => {
-    localStorage.setItem("user-data", JSON.stringify(visibleUser));
-  }, [visibleUser]);
+    localStorage.setItem("user-data", JSON.stringify(users));
+  }, [users]);
 
   return (
     <div className={css.container}>

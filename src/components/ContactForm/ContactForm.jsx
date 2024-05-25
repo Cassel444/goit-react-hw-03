@@ -44,7 +44,7 @@ function ContactForm({ onAdd }) {
         </label>
         <Field
           className={css.input}
-          type="number"
+          type="tel"
           name="number"
           id={numberFieldId}
         />
